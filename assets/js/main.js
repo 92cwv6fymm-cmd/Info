@@ -269,6 +269,65 @@
     compute();
   }
 
+
+  /* ---------------------------------------------------------------------
+     Questionnaire STOP-Bang (+ calcul de l'IMC)
+     --------------------------------------------------------------------- */
+  const sb = $("#stopbang-form");
+  if (sb) {
+    const score = $("#sb-score");
+    const verdict = $("#sb-verdict");
+    const text = $("#sb-text");
+    const counter = $("#sb-count");
+    const reset = $("#sb-reset");
+    const qs = $$(".epworth__q", sb);
+    const total = qs.length;
+    const hInput = $("#sb-height");
+    const wInput = $("#sb-weight");
+    const bmiOut = $("#sb-bmi");
+
+    const interpret = (s) => {
+      if (s <= 2) return ["Risque faible", "#248a3d", "Le questionnaire ne suggère pas de risque particulier d'apnée du sommeil. Si des symptômes vous inquiètent malgré tout, parlez-en à votre médecin."];
+      if (s <= 4) return ["Risque intermédiaire", "#b25e00", "Ce score justifie d'en parler à votre médecin, en particulier si vous êtes un homme, si votre IMC dépasse 35 ou si votre tour de cou est important. Un enregistrement du sommeil permet de trancher."];
+      return ["Risque élevé", "#c0271c", "La probabilité d'un syndrome d'apnées du sommeil, souvent modéré à sévère, est importante. Un dépistage par polygraphie à domicile est recommandé sans tarder."];
+    };
+
+    const updateBmi = () => {
+      if (!hInput || !wInput || !bmiOut) return;
+      const h = parseFloat(hInput.value) / 100;
+      const w = parseFloat(wInput.value);
+      if (h > 0.5 && w > 20) {
+        const bmi = w / (h * h);
+        bmiOut.innerHTML = `IMC : <strong>${bmi.toFixed(1)}</strong>`;
+        const target = $(`input[name="b"][value="${bmi > 35 ? 1 : 0}"]`, sb);
+        if (target && !target.checked) { target.checked = true; }
+      } else {
+        bmiOut.textContent = "";
+      }
+    };
+
+    const compute = () => {
+      let sum = 0, answered = 0;
+      qs.forEach((q) => {
+        const c = $("input:checked", q);
+        if (c) { sum += parseInt(c.value, 10); answered += 1; }
+      });
+      counter.textContent = `${answered} / ${total} questions renseignées`;
+      score.innerHTML = `${sum}<small>/ 8</small>`;
+      if (answered === total) {
+        const [label, color, body] = interpret(sum);
+        verdict.textContent = label; verdict.style.color = color; text.textContent = body;
+      } else {
+        verdict.textContent = "Répondez aux 8 questions"; verdict.style.color = "";
+        text.textContent = "Le score ne s'interprète qu'une fois toutes les questions renseignées.";
+      }
+    };
+    sb.addEventListener("change", compute);
+    sb.addEventListener("input", (e) => { if (e.target === hInput || e.target === wInput) { updateBmi(); compute(); } });
+    if (reset) reset.addEventListener("click", () => { sb.reset(); if (bmiOut) bmiOut.textContent = ""; compute(); });
+    compute();
+  }
+
   /* ---------------------------------------------------------------------
      Galerie horizontale : boutons précédent / suivant
      --------------------------------------------------------------------- */

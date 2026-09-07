@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://92cwv6fymm-cmd.github.io/Info/sitemap.xml
