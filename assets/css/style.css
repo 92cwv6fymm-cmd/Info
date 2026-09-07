@@ -530,14 +530,14 @@ input[type="range"].slider:active::-webkit-slider-thumb { transform: scale(1.12)
 /* ==========================================================================
    Identité Somno-Gard
    ========================================================================== */
-.nav__brand img { height: 38px; width: auto; display: block; }
+.nav__brand img { height: 30px; width: auto; display: block; opacity: 0.92; }
 .nav__cta { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 980px; background: var(--accent); color: #fff !important; font-size: 13px !important; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
 .nav__cta:hover { background: var(--accent-hover); text-decoration: none; }
 .nav__cta svg { width: 14px; height: 14px; }
 @media (max-width: 834px) { .nav__links li:last-child { border-bottom: 0; padding-top: 12px; } .nav__cta { display: inline-flex; padding: 12px 20px; font-size: 16px !important; } }
 
 .logo { display: block; width: min(360px, 70vw); height: auto; margin: 0 auto 28px; }
-.logo--footer { width: 170px; margin: 0 0 14px; }
+.logo--footer { width: 130px; margin: 0 0 14px; opacity: 0.85; }
 .logo--dark { filter: brightness(0) invert(1); opacity: 0.92; }
 
 /* Bandeau flottant "Prendre rendez-vous" (mobile) */
@@ -583,3 +583,5 @@ input[type="range"].slider:active::-webkit-slider-thumb { transform: scale(1.12)
 .snore { stroke: #ff6b62 !important; }
 .stopbang .bmi { display: flex; margin-top: 12px; }
 @media (max-width: 834px) { .scroll-hint { display: none; } .hero--brand { padding-bottom: 48px; } }
+.logo--hero { width: min(180px, 44vw); margin-bottom: 22px; opacity: 0.9; }
+.hero--brand .cta-row .btn { min-width: 260px; justify-content: center; }
