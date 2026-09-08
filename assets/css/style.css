@@ -587,10 +587,10 @@ input[type="range"].slider:active::-webkit-slider-thumb { transform: scale(1.12)
 .logo--hero { width: min(150px, 40vw); margin-bottom: 20px; opacity: 0.9; }
 
 /* Héros d'accueil compact : tient dans un écran de portable */
-.hero--brand { min-height: auto; padding: clamp(56px, 9vh, 100px) 22px 150px; }
+.hero--brand { min-height: auto; padding: clamp(48px, 7vh, 84px) 22px 140px; }
 .hero--brand .hero__content { max-width: 820px; }
 .hero--brand h1 { font-size: clamp(38px, 5.4vw, 66px); }
-.hero--brand .lead { font-size: clamp(17px, 2vw, 22px); max-width: 600px; }
+.hero--brand .lead { font-size: clamp(17px, 1.8vw, 20px); max-width: 600px; }
 .hero--brand .cta-row { margin-top: 30px; }
 .hero--brand .trace { bottom: 30px; height: 90px; opacity: 0.55; }
 .hero--brand .breath { width: min(56vw, 540px); top: 46%; opacity: 0.3; }
@@ -611,3 +611,10 @@ input[type="range"].slider:active::-webkit-slider-thumb { transform: scale(1.12)
   .cta-float a { padding: 10px 18px; font-size: 14px; white-space: nowrap; }
   .to-top { bottom: 64px; right: 14px; width: 40px; height: 40px; }
 }
+
+/* Héros fusionné (accueil) */
+.hero--brand .lead { max-width: 760px; }
+.hero__note { margin: 14px auto 0; max-width: 620px; font-size: 15px; color: var(--text-3); }
+.hero__meta { margin: 26px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; font-size: 13px; color: var(--text-3); }
+.hero__meta strong { color: var(--text-2); font-weight: 600; }
+.hero__meta a { color: var(--text-2); }
